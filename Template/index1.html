@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+ body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: rgba(138, 164, 244, 0.7); /* Add a semi-transparent white background to improve readability */
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: #7db8c8;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* .btn-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .btn-secondary {
+            background-color: #ccc;
+            color: #333;
+        } */
+
+        .input-output-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .input-container,
+        .output-container {
+            width: 48%;
+        }
+        .output-container1 {
+            width: 100%;
+        }
+        .output-container2 {
+            width: 100%;
+        }
+        .output-container2 {
+            width: 100%;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            max-height: 300px; /* Set max height for output container */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            position: relative;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:disabled {
+            background-color: #0056b3;
+            cursor: not-allowed;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: #0056b3;
+        }
+
+            .button {
+        position: relative;
+        padding: 8px 16px;
+        background: #009579;
+        border: none;
+        outline: none;
+        border-radius: 2px;
+        cursor: pointer;
+    }
+
+    .button:active {
+        background: #007a63;
+    }
+
+    .button__text {
+        font: bold 20px 'Quicksand', san-serif;
+        color: #ffffff;
+        transition: all 0.2s;
+    }
+
+            #output {
+                margin-top: 20px;
+                font-size: 18px;
+            }
+
+            .button--loading::after {
+    content: "";
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    border: 4px solid transparent;
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: button-loading-spinner 1s ease infinite;
+}
+@keyframes button-loading-spinner {
+    from {
+        transform: rotate(0turn);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+/* body{
+  margin: 40px;
+} */
+
+button{
+  cursor: pointer;
+  outline: 0;
+  color: #aaaaaa;
+
+}
+
+.btn1:focus {
+  outline: none;
+}
+.btn2:focus {
+  outline: none;
+}
+.green{
+  color: green;
+}
+
+.red{
+  color: red;
+}
+.output1 {
+            margin-top: 10px;
+            padding: 10px;
+            border: 1px solid #070d16;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            max-height: 300px; /* Set max height for output container */
+            overflow-y: auto; /* Enable vertical scrolling if content exceeds max height */
+        }
+
+    
+</style>
+</head>
+<body>
+    <div class="container">
+        <h1>Question and Answer System</h1>
+        <h1>Feedback and Output</h1>
+        <div class="input-output-container">
+            <div class="input-container">
+                <form  method="POST" action="/upload/feedback" enctype="multipart/form-data" >
+                    <div class="form-group2">
+                <div class="output-container3">
+                    <div class="output1" id="output1">
+                    <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+
+                    <button class="btn1" id="green" type="submit"  name="btnTask2" value="click2"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"  ></i></button>
+                    <button class="btn2" id="red" type="submit"  name="btnTask3" value="click3"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true" ></i></button> 
+                    </div>
+                </div>
+                </div></form>
+            </form>
+        </div>
+
+        <div class="output-container">
+            <div class="output" id="output">
+                {{answer}}
+            </div>
+        
+
+            <div class="output-container1">
+                <div class="output" id="output">
+                     {{question}}
+                    
+                </div>
+            
+                <div class="output-container2">
+                    <div class="output" id="output">
+                        
+                        {{context}}
+                    </div>
+            <!-- <div class="output-container3">
+                <div class="output1" id="output1">
+                <script src="https://use.fontawesome.com/fe459689b4.js"></script>
+
+                <button class="btn1" id="green" type="submit"  name="btnTask2" value="click2"><i class="fa fa-thumbs-up fa-lg" aria-hidden="true"  ></i></button>
+                <button class="btn2" id="red" type="submit"  name="btnTask3" value="click3"><i class="fa fa-thumbs-down fa-lg" aria-hidden="true" ></i></button> 
+                </div>
+            </div> -->
+                
+        </div>
+            
+    </div>
+        
+</div>
+<script>
+    const thButton = document.querySelector(".btn2");
+
+
+thButton.addEventListener("click", () => {
+thButton.classList.add("button--loading");
+
+});
+var btn1 = document.querySelector('#green');
+var btn2 = document.querySelector('#red');
+
+btn1.addEventListener('click', function() {
+  
+    if (btn2.classList.contains('red')) {
+      btn2.classList.remove('red');
+    } 
+  this.classList.toggle('green');
+
+  
+});
+
+btn2.addEventListener('click', function() {
+  
+    if (btn1.classList.contains('green')) {
+      btn1.classList.remove('green');
+    } 
+  this.classList.toggle('red');
+  
+});
+
+
+    </script>
+
+</body>
+
+</html>

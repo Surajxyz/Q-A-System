@@ -1,0 +1,8 @@
+langchain==0.1.7
+torch
+transformers
+sentence-transformers
+faiss-cpu
+langchain-community
+pypdf
+flask
